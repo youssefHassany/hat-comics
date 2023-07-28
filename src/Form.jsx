@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Form = ({ handleTyping, handleSubmit, typedHero }) => {
+const Form = ({ handleTyping, typedHero }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(e) => e.preventDefault()}>
         <input 
             required
             type="text" 
@@ -10,7 +10,7 @@ const Form = ({ handleTyping, handleSubmit, typedHero }) => {
             value={typedHero}
             onChange={handleTyping}
         />
-        <button type='submit'>Search</button>
+        {/* <button type='submit'>Search</button> */}
     </form>
   )
 }

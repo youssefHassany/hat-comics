@@ -1,12 +1,14 @@
 import React from 'react'
 
-const Comics = ({ comics }) => {
+const Comics = ({ typedHero, comics }) => {
   return (
     <>
         <h1 style={{textAlign: 'center'}}>Comics: </h1>
 
         <section className='comics-list'>
-            {comics.length ? comics.map((item) => (
+            {comics.length ? comics.filter((item) => (
+                typedHero.toLowerCase() === "" ? item : item["character"].toLowerCase().includes(typedHero)
+            )).map((item) => (
                 <div className='comic' key={item.id}>
                     <img src={`${item["img"]}`} alt="" />
                     <h3>{item["comicName"]}</h3>

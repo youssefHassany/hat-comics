@@ -4,13 +4,14 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "start": "ts-node app.ts"
+    "start": "ts-node server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.4.2",
     "express": "^4.18.2"
   },
   "devDependencies": {

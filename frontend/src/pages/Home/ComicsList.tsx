@@ -10,11 +10,12 @@ const ComicsList = () => {
   }
 
   return (
-    <section className="md:w-3/4 mx-auto my-5">
+    <section className="md:w-5/6 mx-auto my-5 p-2">
       <h2 className="text-3xl text-white text-center my-16">إقراحاتنا</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
         {data?.map((comic) => (
           <ComicCard
+            key={comic.id}
             comicName={comic.comicName}
             company={comic.company}
             complete={comic.complete}

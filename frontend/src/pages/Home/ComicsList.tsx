@@ -1,4 +1,4 @@
-import { useFetchAllComics } from "../../hooks/fetchData/fetchComics/useFetchAllComics";
+import { useFetchAllComics } from "../../hooks/fetchComics/useFetchAllComics";
 import ComicCard from "../../components/comic card/ComicCard";
 
 const ComicsList = () => {

@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 
 interface Page {
@@ -6,47 +5,75 @@ interface Page {
   link: `/${string}`;
 }
 
-interface Props {
-  showNav: boolean;
-  setShowNav: Dispatch<SetStateAction<boolean>>;
-}
-
-const Nav = ({ showNav, setShowNav }: Props) => {
+const Nav = () => {
   const pages: Page[] = [
     { name: "إقتراحات", link: "/recommendations" },
     { name: "مقالات", link: "/blogs" },
     { name: "إدعمنا", link: "/support" },
   ];
-
   return (
-    // mobile view styling starts from the second  line
-    <nav
-      className={`flex lg:justify-between items-center lg:w-fit lg:relative lg:z-0 lg:flex-row lg:h-fit lg:translate-x-0
-                  fixed w-screen h-screen bg-zinc-900 md:bg-transparent backdrop-blur-sm top-0 right-0 z-50 flex-col duration-300 justify-evenly ${
-                    showNav ? "" : "translate-x-full"
-                  }`}
-      onClick={() => setShowNav(false)}
-    >
-      <button
-        onClick={() => setShowNav(!showNav)}
-        className="lg:hidden absolute top-7 right-8 text-3xl"
-      >
-        x
-      </button>
-      <ul className="w-full h-full lg:w-fit lg:h-fit flex flex-col items-center justify-evenly lg:block">
-        {pages.map((page, idx) => (
-          <li key={idx} className="lg:inline-block lg:mx-2 block">
-            <Link
-              to={page.link}
-              className="p-2 font-medium relative
-                      before:absolute before:bottom-0 before:left-0 before:h-1 before:w-0 before:bg-white before:duration-200
-                      before:hover:w-full"
+    <nav className="drawer z-50">
+      <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col">
+        {/* Navbar */}
+        <div className="w-full navbar bg-base-300 fixed top-0">
+          <div className="flex-none lg:hidden">
+            <label
+              htmlFor="my-drawer-3"
+              aria-label="open sidebar"
+              className="btn btn-square btn-ghost"
             >
-              {page.name}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-6 h-6 stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </label>
+          </div>
+          <Link to={"/"} className="flex-1 px-2 mx-2 font-bold">
+            Hat<span className="text-red-700">Comics</span>
+          </Link>
+          <div className="flex-none hidden lg:block">
+            <ul className="menu menu-horizontal">
+              {/* Navbar menu content here */}
+              {pages.map((page, idx) => (
+                <li key={idx}>
+                  <Link to={page.link}>{page.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        {/* Page content here */}
+      </div>
+      <div className="drawer-side">
+        <label
+          htmlFor="my-drawer-3"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        ></label>
+        <ul className="menu p-4 w-80 min-h-full bg-base-200">
+          {/* Sidebar content here */}
+          <li>
+            <Link to={"/"} className="flex-1 px-2 mx-2 font-bold mb-20">
+              Hat<span className="text-red-700">Comics</span>
             </Link>
           </li>
-        ))}
-      </ul>
+          {pages.map((page, idx) => (
+            <li key={idx * 10 + 6} className="my-2">
+              <Link to={page.link}>{page.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 };

@@ -26,6 +26,7 @@
     <li>React (Vite)</li>
     <li>Typescript</li>
     <li>Tailwindcss</li>
+    <li>DaisyUI</li>
     <li>Tanstack React Query</li>
     <li>Axios</li>
 </ul>

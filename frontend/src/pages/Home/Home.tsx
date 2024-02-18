@@ -4,7 +4,7 @@ import "./style.css";
 
 const Home = () => {
   return (
-    <section className="bg-zinc-900 min-h-screen w-screen overflow-x-hidden">
+    <section className="min-h-screen w-screen overflow-x-hidden">
       <Hero />
       <ComicsList />
     </section>

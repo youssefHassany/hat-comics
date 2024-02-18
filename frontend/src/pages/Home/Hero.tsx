@@ -5,7 +5,7 @@ import batman from "../../assets/batman.png";
 
 const Hero = () => {
   return (
-    <section className="hero w-screen h-[90vh] bg-no-repeat">
+    <section className="hero-bg-img hero w-screen mt-16 h-[90vh] bg-no-repeat">
       <div className="bg-black bg-opacity-90 w-full h-full flex flex-col md:flex-row-reverse justify-evenly items-center p-12">
         <motion.div
           transition={{ duration: 0.8 }}

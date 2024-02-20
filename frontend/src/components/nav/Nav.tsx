@@ -12,7 +12,7 @@ const Nav = () => {
     { name: "إدعمنا", link: "/support" },
   ];
   return (
-    <nav className="drawer z-50">
+    <nav className="drawer z-50 fixed top-0">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
@@ -39,7 +39,10 @@ const Nav = () => {
             </label>
           </div>
           <Link to={"/"} className="flex-1 px-2 mx-2 font-bold">
-            Hat<span className="text-red-700">Comics</span>
+            Hat
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-orange-600 to-red-700">
+              Comics
+            </span>
           </Link>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal">
@@ -64,7 +67,10 @@ const Nav = () => {
           {/* Sidebar content here */}
           <li>
             <Link to={"/"} className="flex-1 px-2 mx-2 font-bold mb-20">
-              Hat<span className="text-red-700">Comics</span>
+              Hat
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-orange-600 to-red-700">
+                Comics
+              </span>
             </Link>
           </li>
           {pages.map((page, idx) => (

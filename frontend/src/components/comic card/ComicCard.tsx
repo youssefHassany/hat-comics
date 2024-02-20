@@ -29,7 +29,7 @@ const ComicCard = ({
           <img src={img} alt={comicName} />
         </figure>
         <div className="card-body">
-          <h2 className="card-title text-lg text-center">
+          <h2 className="card-title text-lg justify-center">
             {comicName}
             {/* {issues ? (
               <div className="badge badge-secondary text-white bg-red-700 border-none">

@@ -1,46 +1,35 @@
 import { motion } from "framer-motion";
-import spiderman from "../../assets/spiderman.png";
-import superman from "../../assets/superman.png";
-import batman from "../../assets/batman.png";
+// import spiderman from "../../assets/spiderman.png";
+// import superman from "../../assets/superman.png";
+// import batman from "../../assets/batman.png";
 
 const Hero = () => {
   return (
-    <section className="hero-bg-img hero w-screen mt-16 h-[90vh] bg-no-repeat">
-      <div className="bg-black bg-opacity-90 w-full h-full flex flex-col md:flex-row-reverse justify-evenly items-center p-12">
-        <motion.div
-          transition={{ duration: 0.8 }}
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -40 }}
-          className="text-white text-center font-bold"
-        >
-          <h1 className="text-[50px] my-6">هات كوميكس</h1>
-          <p>بوابتك لعالم الكوميكس</p>
-        </motion.div>
-
-        {/* Superheroes icons */}
-        <motion.div
-          transition={{ duration: 0.8 }}
-          initial={{ opacity: 0, x: 0 }}
-          animate={{ opacity: 1, x: -40 }}
-          exit={{ opacity: 0, x: 0 }}
-          className="text-white font-bold md:flex hidden"
-        >
-          <img
-            src={spiderman}
-            className="w-32 hover:-translate-y-2 duration-200"
-          />
-          <img
-            src={superman}
-            className="w-32 hover:-translate-y-2 duration-200"
-          />
-          <img
-            src={batman}
-            className="w-32 hover:-translate-y-2 duration-200"
-          />
-        </motion.div>
+    <motion.section
+      transition={{ duration: 0.8 }}
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: -40 }}
+      exit={{ opacity: 0, y: 0 }}
+      className="hero min-h-screen bg-base-200"
+    >
+      <div className="hero-content text-center">
+        <div className="max-w-md">
+          <h1 className="text-5xl font-bold">
+            Hat
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-orange-600 to-red-700">
+              Comics
+            </span>
+          </h1>
+          <p className="py-6">
+            بوابتك لعالم و مجتمع الكوميكس بتوفير إقتراحات , مقالات , محتوى و
+            المزيد.
+          </p>
+          <button className="btn btn-primary bg-orange-500 border-none hover:bg-orange-700 text-white">
+            Get Started
+          </button>
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

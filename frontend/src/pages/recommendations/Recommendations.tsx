@@ -1,5 +1,11 @@
+import ComicsList from "./ComicsList";
+
 const Recommendations = () => {
-  return <div>Recommendations</div>;
+  return (
+    <main>
+      <ComicsList />
+    </main>
+  );
 };
 
 export default Recommendations;

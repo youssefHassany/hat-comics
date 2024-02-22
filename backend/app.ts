@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import router from "./routes/comicsRouter";
+import comicsRouter from "./routes/comicsRouter";
 
 const app = express();
 
@@ -12,6 +12,6 @@ app.use(
   })
 );
 
-app.use("/api/v1/comics", router);
+app.use("/api/v1/comics", comicsRouter);
 
 export default app;

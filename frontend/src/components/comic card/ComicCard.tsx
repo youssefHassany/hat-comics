@@ -1,19 +1,20 @@
 import { Link } from "react-router-dom";
-import { Comic } from "../../types/comicType";
+import { ComicType } from "../../types/comicType";
 
 const ComicCard = ({
-  id,
-  comicName,
+  _id,
+  title,
   company,
   complete,
   img,
   character,
   issues,
-}: Comic) => {
+  slug,
+}: ComicType) => {
   return (
     <Link
-      to={`/comic/${id}`}
-      key={id}
+      to={`/comic/${slug}`}
+      key={_id}
       className="p-2 text-white text-center hover:opacity-75 duration-200"
     >
       {/* <img src={img} className="w-32 mx-auto" />
@@ -26,11 +27,11 @@ const ComicCard = ({
       <p>عدد الأعداد: {issues}</p> */}
       <div className="card bg-base-100 shadow-xl">
         <figure>
-          <img src={img} alt={comicName} />
+          <img src={img} alt={title} />
         </figure>
         <div className="card-body">
           <h2 className="card-title text-lg justify-center">
-            {comicName}
+            {title}
             {/* {issues ? (
               <div className="badge badge-secondary text-white bg-red-700 border-none">
                 {issues}

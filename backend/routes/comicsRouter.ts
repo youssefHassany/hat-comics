@@ -1,15 +1,13 @@
 import express from "express";
 import {
   AddComic,
-  checkId,
   getAllComics,
   getComic,
 } from "../controllers/comicsController";
 
-const router = express.Router();
-router.param("id", checkId);
+const comicsRouter = express.Router();
 
-router.route("/").get(getAllComics).post(AddComic);
-router.route("/:id").get(getComic);
+comicsRouter.route("/").get(getAllComics).post(AddComic);
+comicsRouter.route("/:slug").get(getComic);
 
-export default router;
+export default comicsRouter;

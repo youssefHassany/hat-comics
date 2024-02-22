@@ -17,7 +17,7 @@ function App() {
         <Route path="/recommendations" element={<Recommendations />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/support" element={<Support />} />
-        <Route path="/comic/:id" element={<Comic />} />
+        <Route path="/comic/:slug" element={<Comic />} />
       </Routes>
     </main>
   );

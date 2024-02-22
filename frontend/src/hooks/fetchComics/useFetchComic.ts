@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { Comic } from "../../types/comicType";
+import { ComicType } from "../../types/comicType";
 import axios from "axios";
 
-export const useFetchComic = (id: number) => {
+export const useFetchComic = (slug: string) => {
   return useQuery({
     queryKey: ["comic"],
     queryFn: async () => {
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/comics/${id}`
+        `http://localhost:8000/api/v1/comics/${slug}`
       );
-      return data as Comic;
+      return data as ComicType;
     },
   });
 };

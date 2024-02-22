@@ -1,12 +1,11 @@
 export interface ComicType {
-  _id: string;
   company: string;
   character: string;
   title: string;
   issues: number;
   complete: boolean;
   img?: string;
-  publishYear: number;
+  publishYear: Number;
   description: string;
   slug: string;
   englishLink?: string;

@@ -1,71 +1,53 @@
 import { NextFunction, Request, Response } from "express";
-
-import fs from "fs";
-
-interface Comic {
-  id: number;
-  company: string;
-  character?: string;
-  comicName: string;
-  issues?: number;
-  complete?: boolean;
-  img?: string;
-}
-
-const comics: Comic[] = JSON.parse(
-  fs.readFileSync(`${__dirname}/../data/comics-data.json`, "utf-8")
-);
-
-// Check The ID is existing in the data
-export const checkId = (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-  val: any
-) => {
-  if (Number(req.params.id) > comics.length - 1) {
-    return res.status(404).json({
-      status: "fail",
-      message: "Invalid ID",
-    });
-  }
-
-  next();
-};
+import { ComicType } from "../types/ComicType";
+import slugify from "slugify";
+import { Comic } from "../models/comicModel";
 
 // Send All Comics
-export const getAllComics = (req: Request, res: Response) => {
-  res.status(200).json(comics);
+export const getAllComics = async (req: Request, res: Response) => {
+  const allComics = await Comic.find();
+  res.status(200).json(allComics);
 };
 
 // Add a New Comic
-export const AddComic = (req: Request, res: Response) => {
-  // if the comic name or the company is not sent dont change data
-  if (!req.body.comicName || !req.body.company) {
-    return res.status(400).json({
-      status: "fail",
-      message: "Missing comic name or company name",
-    });
+export const AddComic = async (req: Request, res: Response) => {
+  try {
+    // // if the comic name or the company is not sent dont change data
+    // if (!req.body.name || !req.body.company) {
+    //   return res.status(400).json({
+    //     status: "fail",
+    //     message: "Missing comic name or company name",
+    //   });
+    // }
+
+    const newComic: ComicType = {
+      title: req.body.title,
+      company: req.body.company,
+      character: req.body.character,
+      img: req.body.img,
+      complete: req.body.complete,
+      issues: req.body.issues,
+      publishYear: req.body.publishYear,
+      description: req.body.description,
+      slug: slugify(req.body.title),
+    };
+
+    const addedComic = await Comic.create(newComic);
+
+    res.status(201).json(addedComic);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ status: "fail", message: err });
   }
-
-  const newComic: Comic = {
-    id: comics.length,
-    comicName: req.body.comicName,
-    company: req.body.company,
-  };
-  comics.push(newComic);
-
-  fs.writeFile(
-    `${__dirname}/../data/comics-data.json`,
-    JSON.stringify(comics),
-    (err) => {
-      return res.status(201).json(newComic);
-    }
-  );
 };
 
 // get a comic
-export const getComic = (req: Request, res: Response) => {
-  const comic = comics.find((el) => el.id == Number(req.params.id));
-  res.status(200).json(comic);
+export const getComic = async (req: Request, res: Response) => {
+  try {
+    const slug = req.params.slug; // Retrieve the slug from request parameters
+    const comic = await Comic.findOne({ slug }); // Use the retrieved slug
+    res.status(200).json(comic);
+  } catch (err) {
+    res.status(500).json({ status: "fail", message: err });
+  }
 };

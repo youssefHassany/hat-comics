@@ -17,14 +17,6 @@ const ComicCard = ({
       key={_id}
       className="p-2 text-white text-center hover:opacity-75 duration-200"
     >
-      {/* <img src={img} className="w-32 mx-auto" />
-      <div className="text-xs text-gray-400 my-2">
-        <p className=" border-r inline-block px-1">{company}</p>
-        <p className=" border-r inline-block px-1">{character}</p>
-        <p className=" inline-block px-1">{complete ? "مكتمل" : "غير مكتمل"}</p>
-      </div>
-      <h3 className="text-lg font-medium my-2">{comicName}</h3>
-      <p>عدد الأعداد: {issues}</p> */}
       <div className="card bg-base-100 shadow-xl">
         <figure>
           <img src={img} alt={title} />

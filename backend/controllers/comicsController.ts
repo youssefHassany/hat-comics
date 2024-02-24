@@ -51,3 +51,51 @@ export const getComic = async (req: Request, res: Response) => {
     res.status(500).json({ status: "fail", message: err });
   }
 };
+
+/* --------------- Comic Filtering --------------------- */
+
+// By Character
+export const getComicByCharacter = async (req: Request, res: Response) => {
+  try {
+    const character = req.params.character; // Retrieve the character from request parameters
+    const comic = await Comic.find({ character }); // Use the retrieved character
+    res.status(200).json(comic);
+  } catch (err) {
+    res.status(500).json({ status: "fail", message: err });
+  }
+};
+
+// By Company
+export const getComicByCompany = async (req: Request, res: Response) => {
+  try {
+    const company = req.params.company; // Retrieve the company from request parameters
+    const comic = await Comic.find({ company }); // Use the retrieved company
+    res.status(200).json(comic);
+  } catch (err) {
+    res.status(500).json({ status: "fail", message: err });
+  }
+};
+
+// By Issues
+export const getComicBySize = async (req: Request, res: Response) => {
+  try {
+    let comic;
+    const runLength = req.params.size; // Retrieve the length needed: short, medium, or long
+
+    if (runLength === "short") {
+      comic = await Comic.find({ issues: { $lt: 13 } });
+    } else if (runLength === "medium") {
+      comic = await Comic.find({ issues: { $gt: 12, $lt: 37 } });
+    } else if (runLength === "long") {
+      comic = await Comic.find({ issues: { $gt: 36 } });
+    } else {
+      return res
+        .status(400)
+        .json({ status: "fail", message: "Invalid size parameter." });
+    }
+
+    res.status(200).json(comic);
+  } catch (err) {
+    res.status(500).json({ status: "fail", message: err });
+  }
+};

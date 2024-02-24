@@ -24,9 +24,14 @@ const Hero = () => {
             بوابتك لعالم و مجتمع الكوميكس بتوفير إقتراحات , مقالات , محتوى و
             المزيد.
           </p>
-          <button className="btn btn-primary bg-orange-500 border-none hover:bg-orange-700 text-white">
-            Get Started
-          </button>
+          <div className="w-full flex justify-center gap-2">
+            <button className="btn btn-primary bg-gray-700 border-none hover:bg-gray-700 hover:bg-opacity-70 text-white">
+              تصفح كزائر
+            </button>
+            <button className="btn btn-primary bg-orange-500 border-none hover:bg-orange-700 text-white">
+              تسجيل الدخول
+            </button>
+          </div>
         </div>
       </div>
     </motion.section>

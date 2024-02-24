@@ -37,6 +37,6 @@
     <li>NodeJS</li>
     <li>ExpressJS</li>
     <li>Typescript</li>
-    <li>MongoDB (Not Yet using a json file just for now)</li>
+    <li>MongoDB</li>
     <li>mongoose</li>
 </ul>

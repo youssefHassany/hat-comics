@@ -99,3 +99,16 @@ export const getComicBySize = async (req: Request, res: Response) => {
     res.status(500).json({ status: "fail", message: err });
   }
 };
+
+// By Beginner Friendly
+export const getComicByBeginnerFriendly = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const comic = await Comic.find({ beginnerFriendly: true });
+    res.status(200).json(comic);
+  } catch (err) {
+    res.status(500).json({ status: "fail", message: err });
+  }
+};

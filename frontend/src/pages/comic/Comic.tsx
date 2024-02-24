@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import { useFetchComic } from "../../hooks/fetchComics/useFetchComic";
+import { useGetComic } from "../../hooks/useGetComic";
 import Info from "./Info";
 
 const Comic = () => {
   const { slug = "" } = useParams();
-  const { data: comic } = useFetchComic(slug);
+  const { data: comic } = useGetComic(slug);
 
   return (
     <main className="py-10 px-2 md:p-12 flex items-center justify-center w-screen min-h-screen">

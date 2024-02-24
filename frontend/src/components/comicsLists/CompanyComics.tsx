@@ -1,15 +1,18 @@
-import { useFetchAllComics } from "../../hooks/fetchComics/useFetchAllComics";
-import Loader from "../../components/loader/Loader";
+import { useGetComicsByCompany } from "../../hooks/useGetComicsByCompany";
+import Loader from "../loader/Loader";
 import { motion } from "framer-motion";
-import ComicCard from "../../components/comic card/ComicCard";
+import ComicCard from "../comic card/ComicCard";
 
-const AllComics = () => {
-  const { data, isLoading } = useFetchAllComics();
-  // console.log(data);
+interface Props {
+  company: string;
+}
+
+const CompanyComics = ({ company = "Marvel" }: Props) => {
+  const { data, isLoading } = useGetComicsByCompany(company);
 
   if (isLoading) {
     return (
-      <div className="w-screen h-screen p-2">
+      <div className="w-screen p-2">
         <Loader />
       </div>
     );
@@ -31,7 +34,7 @@ const AllComics = () => {
             complete={comic.complete}
             character={comic.character}
             img={comic.img}
-            _id={comic["id"]}
+            _id={comic["_id"]}
             issues={comic.issues}
             slug={comic.slug}
             description={comic.description}
@@ -43,4 +46,4 @@ const AllComics = () => {
   );
 };
 
-export default AllComics;
+export default CompanyComics;

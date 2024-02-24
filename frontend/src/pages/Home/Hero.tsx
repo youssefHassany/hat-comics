@@ -20,10 +20,10 @@ const Hero = () => {
               Comics
             </span>
           </h1>
-          <p className="py-6">
-            بوابتك لعالم و مجتمع الكوميكس بتوفير إقتراحات , مقالات , محتوى و
-            المزيد.
-          </p>
+          <div className="py-8 font-medium text-lg">
+            <p>بوابتك لعالم و مجتمع الكوميكس</p>
+            <p>نوفر لك إقتراحات , مقالات , محتوى و المزيد</p>
+          </div>
           <div className="w-full flex justify-center gap-2">
             <button className="btn btn-primary bg-gray-700 border-none hover:bg-gray-700 hover:bg-opacity-70 text-white">
               تصفح كزائر

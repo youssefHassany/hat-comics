@@ -7,11 +7,13 @@ import {
   getComicByCompany,
   getComicBySize,
   getComicByBeginnerFriendly,
+  getComicList,
 } from "../controllers/comicsController";
 
 const comicsRouter = express.Router();
 
 comicsRouter.route("/").get(getAllComics).post(AddComic);
+comicsRouter.route("/list").get(getComicList);
 comicsRouter.route("/beginner").get(getComicByBeginnerFriendly);
 comicsRouter.route("/:slug").get(getComic);
 comicsRouter.route("/character/:character").get(getComicByCharacter);

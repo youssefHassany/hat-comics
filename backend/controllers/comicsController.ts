@@ -112,3 +112,18 @@ export const getComicByBeginnerFriendly = async (
     res.status(500).json({ status: "fail", message: err });
   }
 };
+
+/* --------------- Pagination --------------------- */
+export const getComicList = async (req: Request, res: Response) => {
+  try {
+    const currentPage: any = req.query.page || 0;
+    const comicsPerPage = 4;
+
+    const comicsList = await Comic.find()
+      .skip(currentPage * comicsPerPage)
+      .limit(comicsPerPage);
+    res.status(200).json(comicsList);
+  } catch (error) {
+    res.status(404).json({ status: "fail", message: error });
+  }
+};
